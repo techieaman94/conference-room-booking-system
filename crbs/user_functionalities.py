@@ -74,8 +74,21 @@ def find_and_book_suitable_room(user_id):
     )
     if not available_rooms:
         print(
-            "\t\t\t\tNo rooms available for selected dates. Please try for some other dates/time\n"
+            "\t\t\t\tNo rooms available for selected date time. Checking for next available slots\n"
         )
+        for _ in range(4):
+            from_datetime_obj_ist = from_datetime_obj_ist + timedelta(hours=1)
+            to_datetime_obj_ist = to_datetime_obj_ist + timedelta(hours=1)
+            available_rooms = get_available_conference_rooms(
+                from_datetime_obj_ist,
+                to_datetime_obj_ist,
+                capacity,
+                required_equipments,
+            )
+            if available_rooms:
+                break
+    if not available_rooms:
+        print("\t\t\t\tNo rooms available. Please try for some other dates/time\n")
         return
     show_suitable_rooms(available_rooms)
     allowed_booking_by_user = check_if_user_allowed_to_book_room(user_id)

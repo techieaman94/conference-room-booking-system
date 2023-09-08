@@ -41,7 +41,7 @@
 
 Here is a screenshot of the terminal for application.
 
-![Screenshot_CRBS](https://github.com/techieaman94/conference-room-booking-system/assets/32607259/b25d2a66-4558-478f-b8dc-cf1acc8aff23)
+![Screenshot_CRBS](https://github.com/techieaman94/conference-room-booking-system/assets/32607259/d7ee4f84-fc15-4d00-89ba-78d66c8eb885)
 
 Please check [media/screenshots](https://github.com/techieaman94/conference-room-booking-system/tree/master/media/screenshots) for more details.
 
