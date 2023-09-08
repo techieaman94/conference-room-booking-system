@@ -17,6 +17,7 @@
   
 Here is a screenshot of the terminal for application.
 
+![Screenshot_CRBS](https://github.com/techieaman94/conference-room-booking-system/assets/32607259/b25d2a66-4558-478f-b8dc-cf1acc8aff23)
 
 ### Installation and running the application
 
