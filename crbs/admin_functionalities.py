@@ -2,6 +2,9 @@ from crbs.constants import SEPARATOR
 from crbs.entities import floors, organizations, permissions, rooms, users
 from crbs.user_functionalities import get_current_datetime_ist
 from crbs.utils import add_rooms_to_floor, print_items_from_list
+from getpass import getpass
+
+from crbs.validations import validate_email
 
 
 def add_new_floor(admin_id):
@@ -45,21 +48,23 @@ def register_new_organization(admin_id):
             added_by=admin_id,
         )
     )
-    print(f"\t\t\tOrganization added, id : {org_id}")
+    print(f"\n\t\t\tOrganization added, id : {org_id}")
     print_items_from_list("Organizations", organizations)
 
 
 def register_new_user(admin_id):
     print(f"{SEPARATOR}\n\t\t\tREGISTER NEW USER\n")
     user_name = input("\t\t\tEnter the name of the user : ")
-    email_id = input("\t\t\tEnter email id : ")
-    password = input("\t\t\tEnter password : ")
+    email_id = input("\t\t\tEnter email id, example - 'abc@xyz.com' : ")
+    validate_email(email_id)
+    password = getpass(prompt="\t\t\tEnter password for user : ")
     role = input("\t\t\tEnter user role : ")
+    valid_org_ids_list = [org["id"] for org in organizations]
+    valid_org_ids_str = ", ".join(map(str, valid_org_ids_list))
+    print(f"\t\t\tValid organization ids (already registered) : {valid_org_ids_str}")
     org_id = int(input("\t\t\tEnter organization id for the user : "))
-    valid_org_ids = [org["id"] for org in organizations]
-    if org_id not in valid_org_ids:
-        print(f"\t\t\tOrganization id : {org_id} doesn't exists!")
-        return
+    if org_id not in valid_org_ids_list:
+        raise ValueError(f"\t\t\tOrganization id : {org_id} doesn't exists!")
     print(
         "\t\t\tEnter the permission ids for the user from followings (comma separated, example : 7,8)"
     )
@@ -86,5 +91,5 @@ def register_new_user(admin_id):
             added_by=admin_id,
         )
     )
-    print(f"\t\t\tUser added, id : {user_id}")
+    print(f"\n\t\t\tUser added, id : {user_id}")
     print_items_from_list("Users", users)

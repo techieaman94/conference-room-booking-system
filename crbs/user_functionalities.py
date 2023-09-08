@@ -6,6 +6,8 @@ from crbs.constants import (
     ALLOWED_CANCELLATION_IN_ADVANCE_SECONDS,
     SEPARATOR,
     VALUE_PROMPT,
+    END_DATETIME_PROMPT,
+    START_DATETIME_PROMPT,
 )
 from crbs.entities import equipments
 from crbs.permissions import (
@@ -30,10 +32,8 @@ from crbs.validations import validate_duration
 
 def show_available_rooms():
     print(f"{SEPARATOR}\n\t\t\tSHOW AVAILABLE ROOMS\n")
-    from_datetime = input(
-        "\t\t\tPlease enter start date and time in 'dd-mm-yyyy HH:MM' format : "
-    )
-    to_datetime = input("\t\t\tEnter end date and time in 'dd-mm-yyyy HH:MM' format : ")
+    from_datetime = input(START_DATETIME_PROMPT)
+    to_datetime = input(END_DATETIME_PROMPT)
     from_datetime_obj_ist = get_datetime_obj_from_str_ist(from_datetime)
     to_datetime_obj_ist = get_datetime_obj_from_str_ist(to_datetime)
     validate_duration(from_datetime_obj_ist, to_datetime_obj_ist, True)
@@ -53,10 +53,8 @@ def find_and_book_suitable_room(user_id):
         f"\n\t\t\tAvailable monthly conference room booking quota "
         f"for your organization is : {available_booking_limit} hours"
     )
-    from_datetime = input(
-        "\n\t\t\tPlease enter start date and time in 'dd-mm-yyyy HH:MM' format : "
-    )
-    to_datetime = input("\t\t\tEnter end date and time in 'dd-mm-yyyy HH:MM' format : ")
+    from_datetime = input(START_DATETIME_PROMPT)
+    to_datetime = input(END_DATETIME_PROMPT)
     from_datetime_obj_ist = get_datetime_obj_from_str_ist(from_datetime)
     to_datetime_obj_ist = get_datetime_obj_from_str_ist(to_datetime) + timedelta(
         seconds=-1
@@ -119,7 +117,7 @@ def cancel_a_booking(user_id):
     filters = {"user_id": user_id}
     user_bookings = get_bookings(**filters)
     print_items_from_list("Your booking details", user_bookings)
-    booking_id = int(input(f"\t\t\tEnter the booking id to cancel a booking : "))
+    booking_id = int(input(f"\n\t\t\tEnter the booking id to cancel a booking : "))
     booking_details = get_booking_details(booking_id)
     now_datetime = get_current_datetime_ist()
     if (
@@ -137,10 +135,8 @@ def cancel_a_booking(user_id):
 
 def show_all_bookings(user_id):
     print(f"{SEPARATOR}\n\t\t\tLIST ALL BOOKINGS\n")
-    from_datetime = input(
-        "\n\t\t\tPlease enter start date and time in 'dd-mm-yyyy HH:MM' format : "
-    )
-    to_datetime = input("\t\t\tEnter end date and time in 'dd-mm-yyyy HH:MM' format : ")
+    from_datetime = input(START_DATETIME_PROMPT)
+    to_datetime = input(END_DATETIME_PROMPT)
     from_datetime_obj_ist = get_datetime_obj_from_str_ist(from_datetime)
     to_datetime_obj_ist = get_datetime_obj_from_str_ist(to_datetime) + timedelta(
         seconds=-1

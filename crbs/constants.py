@@ -3,6 +3,10 @@ from colorama import Fore, Style
 CHOICE_PROMPT = "\n\t\t\tPlease enter your choice from followings\n"
 INVALID_CHOICE_MESSAGE = "\n\t\t\tPlease enter a valid choice!\n"
 INVALID_LOGIN_DETAILS = "\n\t\t\tPlease enter valid email id and password\n"
+START_DATETIME_PROMPT = (
+    "\n\t\t\tPlease enter start date and time in 'dd-mm-yyyy HH:MM' format : "
+)
+END_DATETIME_PROMPT = "\t\t\tEnter end date and time in 'dd-mm-yyyy HH:MM' format : "
 VALUE_PROMPT = "\n\t\t\t--> "
 HOME_SCREEN_PROMPT = "\n\t\t\t 9 to Logout and go to home screen"
 EXIT_PROMPT = "\t\t\t 0 to Exit"

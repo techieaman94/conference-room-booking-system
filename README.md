@@ -15,9 +15,35 @@
   * Cancel a booking.
   * See all bookings for their organization/done by the user/done by another user of the same company.
   
+## Project structure
+```
+.
+├── crbs
+|   ├── __init__.py
+|   ├── admin_functionalities.py
+|   ├── command_line_interface.py
+|   ├── constants.py
+|   ├── entities.py
+|   ├── permissions.py
+|   ├── user_functionalities.py
+|   ├── utils.py
+|   └── validations.py
+├── media
+|   └── screenshots
+|          └── ..
+|          └── ..
+|          └── ..
+├── .gitignore
+├── main.py
+├── README.md
+└── requirements.txt
+```
+
 Here is a screenshot of the terminal for application.
 
 ![Screenshot_CRBS](https://github.com/techieaman94/conference-room-booking-system/assets/32607259/b25d2a66-4558-478f-b8dc-cf1acc8aff23)
+
+Please check [media/screenshots](https://github.com/techieaman94/conference-room-booking-system/tree/master/media/screenshots) for more details.
 
 ### Installation and running the application
 

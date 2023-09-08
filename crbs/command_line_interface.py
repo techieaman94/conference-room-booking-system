@@ -1,4 +1,4 @@
-import getpass
+from getpass import getpass
 
 from colorama import Fore, Style
 
@@ -101,7 +101,7 @@ def login_screen(admin=False):
     print(title.format(format_value))
     print(f"{SEPARATOR}")
     email_id = input("\t\t\tEnter your email id : ")
-    password = getpass.getpass(prompt="\t\t\tEnter your password : ")
+    password = getpass(prompt="\t\t\tEnter your password : ")
     user_id = login_and_get_user_id(email_id, password, admin)
     if user_id == -1:
         print(Fore.RED + INVALID_LOGIN_DETAILS, Style.RESET_ALL)

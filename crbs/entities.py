@@ -46,14 +46,16 @@ organizations = [
     }
 ]
 
-admins = [{"id": 1000, "name": "Admin", "email_id": "email", "password": "admin"}]
+admins = [
+    {"id": 1000, "name": "Admin", "email_id": "admin@crbs.com", "password": "admin"}
+]
 
 users = [
     {
         "id": 2000,
         "name": "Rahul",
-        "email_id": "email1",
-        "password": "admin1",
+        "email_id": "user@crbs.com",
+        "password": "user",
         "role": "SDE",
         "organization_id": 1693599435,
         "permissions": [7, 8],
@@ -71,5 +73,14 @@ bookings = [
         "booked_by": 2000,
         "organization_id": 1693599435,
         "cancelled": False,
-    }
+    },
+    {
+        "id": 1694158090,
+        "room_id": 1693599332,
+        "from_datetime": now_datetime + timedelta(hours=6),
+        "to_datetime": now_datetime + timedelta(hours=7),
+        "booked_by": 2000,
+        "organization_id": 1693599435,
+        "cancelled": False,
+    },
 ]
